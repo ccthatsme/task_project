@@ -19,7 +19,7 @@ jobs:
   
         - uses: 'google-github-actions/auth@v2'
           with:
-                #workload_identity_provider: 'projects/840134438674/locations/global/workloadIdentityPools/taskprojectpool/providers/GitHub'
+                workload_identity_provider: 'projects/840134438674/locations/global/workloadIdentityPools/taskprojectpool/providers/github'
                 service_account: '840134438674-compute@developer.gserviceaccount.com'
   
         - uses: 'google-github-actions/deploy-cloudrun@v2'
