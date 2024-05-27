@@ -40,11 +40,14 @@ jobs:
         - name: 'Docker auth'
           run: |-
                 gcloud auth configure-docker us-east5-docker.pkg.dev/np-task-project/task-project
-
-        - name: 'Build and push container'
+# try separating the build and push step here?
+        - name: 'Build container'
           run: |-
-                docker build -t "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.APP }}/${{ env.APP }}:${{ github.sha }}" ./
-                docker push "${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.APP }}/${{ env.APP }}:${{ github.sha }}"
+                docker build -t "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.APP }}/${{ github.sha }}:latest" ./
+              
+        - name: 'Push container'
+          run: |-
+                docker push "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.APP }}/${{ github.sha }}:latest"
 # us-east5-docker.pkg.dev/np-task-project/cloud-run-source-deploy/task_project/task-project
 # us-east5-docker.pkg.dev/np-task-project/cloud-run-source-deploy/task-project/task-project
         - name: 'Render templatised config manifests'
