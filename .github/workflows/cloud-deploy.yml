@@ -7,7 +7,7 @@ on:
 
 env:
     PROJECT_ID: 'np-task-project'
-    GAR_LOCATION: 'us-east5-docker.pkg.dev/np-task-project/cloud-run-source-deploy/task_project/task-project'
+    GAR_LOCATION: 'us-east5-docker.pkg.dev/np-task-project/cloud-run-source-deploy/task_project'
     REGION: 'us-east5'
     APP: 'task-project'
 
