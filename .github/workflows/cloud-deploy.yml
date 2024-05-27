@@ -44,7 +44,7 @@ jobs:
         - name: 'Build and push container'
           run: |-
                 docker build -t "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.APP }}/${{ env.APP }}:${{ github.sha }}" ./
-                docker push "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.APP }}/${{ env.APP }}:${{ github.sha }}"
+                docker push "${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.APP }}/${{ env.APP }}:${{ github.sha }}"
 # us-east5-docker.pkg.dev/np-task-project/cloud-run-source-deploy/task_project/task-project
 # us-east5-docker.pkg.dev/np-task-project/cloud-run-source-deploy/task-project/task-project
         - name: 'Render templatised config manifests'
