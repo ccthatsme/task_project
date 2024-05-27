@@ -39,7 +39,7 @@ jobs:
         #       service: 'task-project'
         - name: 'Docker auth'
           run: |-
-                gcloud auth configure-docker us-east5-docker.pkg.dev
+                gcloud auth configure-docker us-east5-docker.pkg.dev/np-task-project/task-project
 
         - name: 'Build and push container'
           run: |-
