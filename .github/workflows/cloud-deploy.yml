@@ -43,13 +43,13 @@ jobs:
 # try separating the build and push step here?
         - name: 'Build container'
           run: |-
-                docker build -t "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/task_project/${{env.APP}}:${{ github.sha }}" ./
+                docker build -t "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/testing-project/${{env.APP}}:${{ github.sha }}" ./
               
         - name: 'Push container'
           run: |-
-                docker push "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/task_project/${{env.APP}}:${{ github.sha }}"
+                docker push "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/testing-project/${{env.APP}}:${{ github.sha }}"
 # us-east5-docker.pkg.dev/np-task-project/cloud-run-source-deploy/task_project/task-project
-# us-east5-docker.pkg.dev/np-task-project/cloud-run-source-deploy/task-project/task-project
+# us-east5-docker.pkg.dev/np-task-project/testing-project
         - name: 'Render templatised config manifests'
           run: |-
                 export PROJECT_ID="${{ env.PROJECT_ID }}"
