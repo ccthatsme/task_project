@@ -57,7 +57,7 @@ jobs:
         
         - name: 'Create Cloud Deploy delivery pipeline'
           run: |-
-                gcloud deploy apply --file config/clouddeploy.yaml --region us-east5
+                gcloud deploy apply --file .github/workflows/config/clouddeploy.yaml --region us-east5
 
 
         - name: 'Create release name'
