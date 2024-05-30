@@ -48,22 +48,21 @@ jobs:
         - name: 'Push container'
           run: |-
                 docker push "us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/testing-project/${{env.APP}}:${{ github.sha }}"
-# us-east5-docker.pkg.dev/np-task-project/cloud-run-source-deploy/task_project/task-project
-# us-east5-docker.pkg.dev/np-task-project/testing-project
+
         - name: 'Render templatised config manifests'
           run: |-
                 export PROJECT_ID="${{ env.PROJECT_ID }}"
                 export REGION="${{ env.REGION }}"
                 for template in $(ls config/*.template.yaml); do envsubst < ${template} > ${template%%.*}.yaml ; done
         
-        # - name: 'Create Cloud Deploy delivery pipeline'
-        #   run: |-
-        #         gcloud deploy apply --file config/clouddeploy.yaml --region ${{ env.GAR_LOCATION }}
+        - name: 'Create Cloud Deploy delivery pipeline'
+          run: |-
+                gcloud deploy apply --file config/clouddeploy.yaml --region us-east5
 
 
         - name: 'Create release name'
           run: |-
-                echo "RELEASE_NAME=${{ env.APP }}-${{github.sha}}-" >> $GITHUB_ENV
+                echo "RELEASE_NAME=${{ env.APP }}-${{github.sha}}-$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
         
         - name: 'Create Cloud Deploy release'
           id: 'release'
