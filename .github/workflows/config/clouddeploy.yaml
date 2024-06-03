@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+env:
+    PROJECT_ID: 'np-task-project'
+    GAR_LOCATION: 'us-east5/np-task-project/cloud-run-source-deploy/task_project'
+    REGION: 'us-east5'
+    APP: 'task-project'
+
 apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
