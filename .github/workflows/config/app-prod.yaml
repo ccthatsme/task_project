@@ -23,7 +23,7 @@ profiles:
     manifests:
       rawYaml:
         - 'app-staging.yaml'
-  - name: 'prod'
-    manifests:
-      rawYaml:
-        - 'app-prod.yaml'
+#   - name: 'prod'
+#     manifests:
+#       rawYaml:
+#         - 'app-prod.yaml'
