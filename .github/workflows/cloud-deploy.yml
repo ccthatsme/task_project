@@ -62,7 +62,10 @@ jobs:
 
         - name: 'Create release name'
           run: |-
-                echo "RELEASE_NAME=${{ env.APP }}-${{github.sha}}-$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
+                echo "RELEASE_NAME=${{ env.APP }}-$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
+                
+            #                 echo "RELEASE_NAME=${{ env.APP }}-${{github.sha}}-$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
+
         # pipeline is being created but failing to create a release here 
         - name: 'Create Cloud Deploy release'
           id: 'release'
@@ -73,7 +76,9 @@ jobs:
                   region: '${{ env.REGION }}'
                   description: '${{ env.GITHUB_COMMIT_MSG }}'
                   skaffold_file: '.github/workflows/config/skaffold.yaml'
-                  images: 'app=us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/testing-project/${{env.APP}}:${{ github.sha }}'
+                  images: 'app=us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/testing-project/${{env.APP}}'
+                  #                   images: 'app=us-east5-docker.pkg.dev/${{ env.PROJECT_ID }}/testing-project/${{env.APP}}:${{ github.sha }}'
+
         
         - name: 'Report Cloud Deploy release'
           run: |-
