@@ -19,11 +19,12 @@ metadata:
 deploy:
   cloudrun: {}
 profiles:
-  - name: 'staging'
+  - name: 'prod'
     manifests:
       rawYaml:
-        - 'app-staging.yaml'
-#   - name: 'prod'
+        - 'app-prod.yaml'
+
+#   - name: 'staging'
 #     manifests:
 #       rawYaml:
-#         - 'app-prod.yaml'
+#         - 'app-staging.yaml'
