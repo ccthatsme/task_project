@@ -23,10 +23,8 @@ spec:
         autoscaling.knative.dev/maxScale: '1'
     spec:
       containers:
-      - name: 'task-project'
+      - name: 'app'
         image: 'app'
         env:
           - name: 'TARGET'
             value: 'Staging'
-
-            # try here maybe the image has to change

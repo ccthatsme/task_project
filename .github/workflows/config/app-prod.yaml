@@ -12,19 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: skaffold/v3alpha1
-kind: Config
+apiVersion: serving.knative.dev/v1
+kind: Service
 metadata:
-  name: 'app'
-deploy:
-  cloudrun: {}
-profiles:
-  - name: 'prod'
-    manifests:
-      rawYaml:
-        - 'app-prod.yaml'
-
-#   - name: 'staging'
-#     manifests:
-#       rawYaml:
-#         - 'app-staging.yaml'
+  name: 'app-prod'
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '1'
+    spec:
+      containers:
+      - name: 'app'
+        image: 'app'
+        env:
+          - name: 'TARGET'
+            value: 'Prod'
